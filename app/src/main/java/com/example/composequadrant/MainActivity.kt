@@ -7,9 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -44,37 +42,34 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyScreen(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.fillMaxWidth()) {
-        Row(modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight(0.5f)) {
+    Column(modifier = modifier.fillMaxSize()) {
+        Row(modifier = Modifier
+            .weight(1f)) {
             ComposableCard(
                 heading = "Text composable",
                 paragraph = "Displays text and follows the recommended Material Design guidelines.",
                 0xFFEADDFF,
-                Modifier.fillMaxWidth(0.5f).fillMaxHeight()
+                modifier = Modifier.weight(1f)
             )
             ComposableCard(
                 heading = "Image composable",
                 paragraph = "Creates a composable that lays out and draws a given Painter class object.",
                 0xFFD0BCFF,
-                Modifier.fillMaxWidth().fillMaxHeight()
+                modifier = Modifier.weight(1f)
             )
         }
-        Row(modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight()) {
+        Row(modifier = Modifier.weight(1f)) {
             ComposableCard(
                 heading = "Row composable",
                 paragraph = "A layout composable that places its children in a horizontal sequence.",
                 0xFFB69DF8,
-                Modifier.fillMaxWidth(0.5f).fillMaxHeight()
+                modifier = Modifier.weight(1f)
             )
             ComposableCard(
                 heading = "Column composable",
                 paragraph = "A layout composable that places its children in a vertical sequence.",
                 0xFFF6EDFF,
-                Modifier.fillMaxWidth().fillMaxHeight()
+                modifier = Modifier.weight(1f)
             )
         }
     }
@@ -85,7 +80,7 @@ fun MyScreen(modifier: Modifier = Modifier) {
 @Composable
 fun ComposableCard(heading: String, paragraph: String, color: Long, modifier: Modifier = Modifier) {
     Surface(
-        modifier = modifier, color = Color(color)
+        modifier = modifier.fillMaxSize(), color = Color(color)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
